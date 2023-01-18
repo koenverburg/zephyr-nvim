@@ -2,6 +2,81 @@
 -- Author: glepnir
 -- License: MIT
 -- Source: http://github.com/glepnir/z-nvim
+
+local red = {
+  shade1 = '#feffff',
+  shade2 = '#f8d3d2',
+  shade3 = '#f2a8a5',
+  shade4 = '#ed7d79',
+  shade5 = '#e5524c',
+  shade6 = '#df271f',
+  shade7 = '#b21f19',
+  shade8 = '#851713',
+  shade9 = '#590f0c',
+}
+
+local orange = {
+  shade1 = '#fff9f2',
+  shade2 = '#fee3c1',
+  shade3 = '#ffd099',
+  shade4 = '#ffb966',
+  shade5 = '#ffa233',
+  shade6 = '#ff8b00',
+  shade7 = '#cc6f00',
+}
+
+local yellow = {
+  shade1 = '#fef4c9',
+  shade2 = '#ffea99',
+  shade3 = '#ffe068',
+  shade4 = '#ffd637',
+  shade5 = '#ffcc06',
+  shade6 = '#d4a900',
+  shade7 = '#a38200',
+  shade8 = '#725b00',
+  shade9 = '#413400',
+  shade10 = '#100d00',
+}
+
+local stone = {
+  shade1 = '#e7e4e1',
+  shade2 = '#d2ccc5',
+  shade3 = '#bcb3aa',
+  shade4 = '#a79b8e',
+  shade5 = '#918273',
+  shade6 = '#766a5d',
+  shade7 = '#5b5147',
+  shade8 = '#403932',
+  shade9 = '#24201c',
+  shade10 = '#090807',
+}
+
+
+local wayfinder = {
+  red = '#8b0000',
+  red1 = '#7d0000',
+  red2 = '#6f0000',
+  red3 = '#610000',
+  red4 = '#530000',
+  red5 = '#460000',
+  red6 = '#380000',
+  red7 = '#2a0000',
+  red8 = '#1c0000',
+  red9 = '#0e0000',
+}
+
+local bright = {
+  pinkish = '#FB467B'
+}
+
+local shades = {}
+shades.red = red
+shades.orange = orange
+shades.yellow = yellow
+shades.bright = bright
+shades.stone = stone
+shades.wayfinder = wayfinder
+
 local z = {
   base0 = "#1B2229",
   base1 = "#1c1f24",
@@ -13,9 +88,13 @@ local z = {
   base7 = "#9ca0a4",
   base8 = "#b1b1b1",
 
-  bg = "#262a33",
-  bg1 = "#504945",
-  bg_popup = "#3E4556",
+  bg = '#00010A',
+  bg1 = '#0D1016',
+  bg_popup = shades.stone.shade10,
+
+  -- bg = "#262a33",
+  -- bg1 = "#504945",
+  -- bg_popup = "#3E4556",
   bg_highlight = "#2E323C",
   bg_visual = "#b3deef",
 
@@ -31,7 +110,7 @@ local z = {
   -- #a8eb44
   dark_green = "#98be65",
   cyan = "#36d0e0",
-  blue = "#61afef",
+  blue = shades.orange.shade3,
   violet = "#CBA6F7",
   magenta = "#c678dd",
   teal = "#1abc9c",
@@ -67,8 +146,8 @@ local syntax = {
   Terminal = { fg = z.fg, bg = z.bg },
   SignColumn = { fg = z.fg, bg = z.bg },
   FoldColumn = { fg = z.fg_alt, bg = z.black },
-  VertSplit = { fg = z.black, bg = z.bg },
-  Folded = { fg = z.lignt_orange, bg = z.bg_highlight },
+  VertSplit = { fg = z.red, bg = z.bg },
+  Folded = { fg = z.lignt_orange, bg = z.black },
   EndOfBuffer = { fg = z.bg, bg = z.none },
   IncSearch = { fg = z.bg1, bg = z.orange },
   Search = { fg = z.bg, bg = z.orange },
@@ -118,14 +197,18 @@ local syntax = {
   Debug = { fg = z.orange },
   debugBreakpoint = { fg = z.bg, bg = z.red },
 
-  Boolean = { fg = z.orange },
+  -- VertSplit      = { fg = z.red },
+  WinSeparator   = { fg = z.red },
+  FloatBorder    = { fg = z.red }, -- affects telescope borders
+
+  Boolean = { fg = z.orange, bold = true },
   Number = { fg = z.brown },
   Float = { fg = z.brown },
   PreProc = { fg = z.violet },
   PreCondit = { fg = z.violet },
   Include = { fg = z.violet },
   Define = { fg = z.violet },
-  Conditional = { fg = z.magenta },
+  Conditional = { fg = z.magenta, bold = true },
   Repeat = { fg = z.magenta },
   Keyword = { fg = z.green },
   Typedef = { fg = z.red },
@@ -141,7 +224,7 @@ local syntax = {
   Special = { fg = z.yellow },
   SpecialChar = { fg = z.yellow },
   Type = { fg = z.teal },
-  Function = { fg = z.yellow },
+  Function = { fg = z.yellow, bold = true },
   String = { fg = z.lignt_orange },
   Character = { fg = z.green },
   Constant = { fg = z.cyan },
@@ -163,8 +246,8 @@ local syntax = {
 }
 
 local plugin_syntax = {
-  ["@function"] = { fg = z.cyan },
-  ["@method"] = { fg = z.cyan },
+  ["@function"] = { fg = z.cyan, bold = true },
+  ["@method"] = { fg = z.cyan, bold = true },
   ["@keyword.function"] = { fg = z.red },
   ["@property"] = { fg = z.yellow },
   ["@type"] = { fg = z.teal },
